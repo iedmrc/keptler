@@ -1,6 +1,6 @@
 module keptler
 
-go 1.23.8
+go 1.23
 
 require filippo.io/age v1.2.1
 
