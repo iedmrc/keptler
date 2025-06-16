@@ -10,11 +10,13 @@ The repository ships pre‑built binaries for Linux and macOS. Install the
 latest release by running:
 
 ```bash
-curl -sSfL https://raw.githubusercontent.com/iedmrc/keptler/refs/heads/main/install.sh | sh
+curl -sSfL https://raw.githubusercontent.com/iedmrc/keptler/main/install.sh | sh
 ```
 
 The script downloads the archive for your platform and places the `keptler`
 binary in `/usr/local/bin` (falling back to `~/.local/bin` when necessary).
+If `/usr/local/bin` isn't writable, run the script with `sudo` or add
+`$HOME/.local/bin` to your `PATH` so the fallback location is recognised.
 
 ### Building from source
 
