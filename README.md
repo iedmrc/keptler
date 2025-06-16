@@ -18,6 +18,16 @@ binary in `/usr/local/bin` (falling back to `~/.local/bin` when necessary).
 If `/usr/local/bin` isn't writable, run the script with `sudo` or add
 `$HOME/.local/bin` to your `PATH` so the fallback location is recognised.
 
+### Uninstallation
+
+To remove a previously installed binary, run:
+
+```bash
+curl -sSfL https://raw.githubusercontent.com/iedmrc/keptler/main/uninstall.sh | sudo sh
+```
+
+The script deletes `keptler` from `/usr/local/bin` or `~/.local/bin` if present.
+
 ### Building from source
 
 This project requires Go 1.23 or newer. To build the binary yourself, run:
