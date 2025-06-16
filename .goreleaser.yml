@@ -1,0 +1,26 @@
+project_name: keptler
+builds:
+  - main: ./cmd/keptler
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    ldflags: -s -w
+archives:
+  - id: keptler
+    format: tar.gz
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    files:
+      - README.md
+    replacements:
+      darwin: macOS
+release:
+  github:
+    owner: ${{ github.repository_owner }}
+    name: keptler
+    draft: true
+    prerelease: false
+

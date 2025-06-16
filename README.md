@@ -21,3 +21,10 @@ The `generate` command materialises secrets declared in your template:
 `secret.env` and the Age-encrypted `.keptler.state.age` file are created in the working directory. Subsequent runs reuse existing values when possible.
 
 See [docs/Functional Specification.md](docs/Functional%20Specification.md) for the detailed specification and [docs/TASKS.md](docs/TASKS.md) for the development roadmap.
+
+## Automated Releases
+
+Tagged commits are built and published by GitHub Actions using
+[GoReleaser](https://goreleaser.com/). The workflow cross‑compiles
+`keptler` for Linux, macOS and Windows on both `amd64` and `arm64`
+architectures and uploads the archives to the corresponding GitHub Release.
