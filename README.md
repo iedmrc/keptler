@@ -10,7 +10,7 @@ The repository ships pre‑built binaries for Linux and macOS. Install the
 latest release by running:
 
 ```bash
-curl -sSfL https://raw.githubusercontent.com/iedmrc/keptler/main/install.sh | sh
+curl -sSfL https://raw.githubusercontent.com/iedmrc/keptler/main/install.sh | sudo sh
 ```
 
 The script downloads the archive for your platform and places the `keptler`
