@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO="keptler/keptler"
+REPO="iedmrc/keptler"
 OS="$(uname -s)"
 case "$OS" in
     Linux) OS=linux ;;
