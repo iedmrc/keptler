@@ -4,7 +4,21 @@ Keptler is a generation-first secrets CLI. It turns annotated `.env.example` tem
 
 ## Installation
 
-This project requires Go 1.23 or newer. To build the `keptler` binary, run:
+### Using the install script
+
+The repository ships pre‑built binaries for Linux and macOS. Install the
+latest release by running:
+
+```bash
+curl -sSfL https://raw.githubusercontent.com/keptler/keptler/main/install.sh | sh
+```
+
+The script downloads the archive for your platform and places the `keptler`
+binary in `/usr/local/bin` (falling back to `~/.local/bin` when necessary).
+
+### Building from source
+
+This project requires Go 1.23 or newer. To build the binary yourself, run:
 
 ```bash
 go build ./cmd/keptler
