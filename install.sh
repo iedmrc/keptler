@@ -4,19 +4,25 @@ set -euo pipefail
 REPO="iedmrc/keptler"
 OS="$(uname -s)"
 case "$OS" in
-    Linux) OS=linux ;;
-    Darwin) OS=darwin ;;
-    *) echo "Unsupported OS: $OS" >&2; exit 1 ;;
+Linux) OS=linux ;;
+Darwin) OS=darwin ;;
+*)
+	echo "Unsupported OS: $OS" >&2
+	exit 1
+	;;
 esac
 ARCH="$(uname -m)"
 case "$ARCH" in
-    x86_64|amd64) ARCH=amd64 ;;
-    arm64|aarch64) ARCH=arm64 ;;
-    *) echo "Unsupported architecture: $ARCH" >&2; exit 1 ;;
+x86_64 | amd64) ARCH=amd64 ;;
+arm64 | aarch64) ARCH=arm64 ;;
+*)
+	echo "Unsupported architecture: $ARCH" >&2
+	exit 1
+	;;
 esac
 
-LATEST=$(curl -fsSL "https://api.github.com/repos/$REPO/releases/latest" | \
-  grep tag_name | head -n1 | cut -d '"' -f4)
+LATEST=$(curl -fsSL "https://api.github.com/repos/$REPO/releases/latest" |
+	grep tag_name | head -n1 | cut -d '"' -f4)
 # Release assets are named without the leading 'v' prefix used in tag names.
 VERSION="${LATEST#v}"
 TARBALL="keptler_${VERSION}_${OS}_${ARCH}.tar.gz"
@@ -29,10 +35,10 @@ tar -xzf "$tmpdir/$TARBALL" -C "$tmpdir"
 
 DEST="/usr/local/bin"
 if install -m 0755 "$tmpdir/keptler" "$DEST/keptler" 2>/dev/null; then
-    echo "Installed keptler to $DEST/keptler"
+	echo "Installed keptler to $DEST/keptler"
 else
-    DEST="$HOME/.local/bin"
-    mkdir -p "$DEST"
-    install -m 0755 "$tmpdir/keptler" "$DEST/keptler"
-    echo "Installed keptler to $DEST/keptler"
+	DEST="$HOME/.local/bin"
+	mkdir -p "$DEST"
+	install -m 0755 "$tmpdir/keptler" "$DEST/keptler"
+	echo "Installed keptler to $DEST/keptler"
 fi
